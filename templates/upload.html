@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Uploaded files</h3>
+        <li class="active"><a href="/{{ user }}/uploads">Recent Uploads for {{ user }}</a></li>
+        <li class="active"><a href="/">Upload More Files</a></li>
+
+      </div>
+      <hr/>
+      <div>
+      This is a list of the files you just uploaded, click on them to load/download them
+      <ul>
+        {% for file in filenames %}
+          {% if user %} 
+            <li><a href="{{url_for('uploaded_file_user', filename=file, user=user)}}">{{file}}</a></li>
+          {% else %}
+            <li><a href="{{url_for('uploaded_file', filename=file)}}">{{file}}</a></li>
+          {%endif %}
+        {% endfor %}
+        <br><br>
+        Current Disk Utilization: {{ disk }}
+      </ul>
+      </div>
+      <hr/>    
+      </div>
+    </div>
+  </body>
+</html>

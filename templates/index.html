@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Upload a File</h3>         
+        {% if not user %}
+          We need a username or group first, so enter that at the end of the URL.<br><br>
+          Example:<br>
+          <a href="https://upload.domain.com/user">https://upload.domain.com/user</a>
+          <br>or<br>
+          <a href="https://upload.domain.com/group">https://upload.domain.com/group</a>
+        {% else %}
+          <li class="active"><a href="{{ user }}/uploads">Recent Uploads for {{ user }}</a></li>
+      </div>
+      <hr/>
+      <div>
+      
+      <form action="{{ user }}/upload" method="post" enctype="multipart/form-data">
+        <input type="file" multiple="" name="file[]" class="span3" /><br />
+        <input type="submit" value="Upload"  class="span2">
+      </form>
+        {% endif %}
+        <br><br>
+        Current Disk Utilization: {{ disk }}
+      </div>
+    </div>
+  </body>
+</html>

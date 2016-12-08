@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Recent Uploads for {{ user }}</h3>
+        <li class="active"><a href="/{{ user }}">Upload More Files</a></li>
+
+      </div>
+      <hr/>
+      <div>
+      <ul>
+        {% for file in files %}
+        <li><a href="/{{ user }}/uploads/{{ file }}">{{file}}</a></li>
+        {% endfor %}
+        <br><br>
+        Current Disk Utilization: {{ disk }}
+      </ul>
+      </div>
+      <hr/>
+      </div>
+    </div>
+  </body>
+</html>
